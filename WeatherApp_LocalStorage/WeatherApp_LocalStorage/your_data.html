@@ -1,0 +1,112 @@
+<!--
+    Zane Taylor
+    CIS 234
+    Project 3
+    Your Data Page (View, Add, Edit, and Delete Data)
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Lenox Temperature App - Your Forecast Data</title>
+    <!-- Latest compiled and minified CSS for Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript for Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- my stylesheet -->
+    <link href="./css/temperature_styles.css" rel="stylesheet">
+    <!-- my JavaScript -->
+    <script src="./js/shared_functions.js"></script>
+    <script src="./js/storage.js"></script>
+
+</head>
+<!-- Call function to display forecast records in local storage when the body loads. This function also calls
+    the function to set the copyright text in the footer. -->
+<body onload="read_keys()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <nav class="navbar">
+                    <ul class="nav">
+                        <!-- Nav Bar containing links to the four website pages -->
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="your_data.html">Your Forecast Data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="lookup.html">New Lenox Lookup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="monthly.html">New Lenox Monthly View</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <!-- Page Title and information on how to interact with this page's application, which involves using the
+                form to create forcast records consisting of a date, temperature, location, and weather pattern. These
+                records are saved with local storage and can be deleted and edited. Multiple can be created and all
+                records are viewed on this page. As long as the local storage data exists, the records were persist
+                even after leaving the page.-->
+                <h1>Your Forecast Data</h1>
+                <p>
+                    Enter and view your own weather forecast data. Type in a date, temperature, location, and weather patterns,
+                    and then save it by clicking the save button. From there, you can edit the data, delete it, or add more.
+                </p>
+                <!-- Form containing the date picker object and three text input objects, all used to enter the fields for the
+                forcast records. There is also a button to save a record (Save Data) and a button to clear the input fields.
+                The Save Data button calls a function.-->
+                <form action="#" method="post">
+                    <label for="yourDateID">Date:</label><input type="date" class="form-control" id="yourDateID" name="date" required="required">
+                    <br />
+                    <label for="yourTemperatureID">Temperature:&nbsp;</label><input type="text" id="yourTemperatureID" name="temperature" required="required">
+                    <label for="yourLocationID">Location:&nbsp;</label><input type="text" id="yourLocationID" name="location" required="required">
+                    <label for="yourWeatherID">Weather:&nbsp;</label><input type="text" id="yourWeatherID" name="weather" required="required">
+                    <br /><button type="button" class="btn btn-primary text-light yourDataButton" id="saveButton" onclick="set_key()">Save Data</button>
+                    <input type="reset" class="btn btn-secondary text-light yourDataButton">
+                </form>
+                <!-- Div that displays a message stating the number of records that are saved to local storage. -->
+                <div id="key_length"></div>
+                <!-- Table that is used to display all the forcast records. The table by default consists only of the table
+                headers for each column. More table rows are add dynamically for every record in local storage. The table
+                is hidden when there are no records.-->
+                <table id="yourDisplayTable">
+                    <tr>
+                        <th class='leftSideTable'>Date</th>
+                        <th class='leftSideTable'>Temperature</th>
+                        <th class='leftSideTable'>Location</th>
+                        <th class='leftSideTable'>Weather</th>
+                    </tr>
+                </table>
+                <!-- Text describing a button that deletes all records when clicked, along with the described button.
+                The button calls a function when clicked. -->
+                <br /><p>
+                    Remove All Records?&nbsp;
+                    <button type="submit" class="btn btn-danger" onclick="clear_all()">Erase All Records</button><br />
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <footer class="row" id="yourFooter">
+            <div class="col-sm-2"></div>
+            <!-- Author Year placeholder is overwritten due to the set_footer() function -->
+            <div class="col-sm-8">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+                </a>
+                <br />This work is licensed under a
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    Creative Commons Attribution-ShareAlike 4.0 International License
+                </a>.<br /><span id="footerTextDisplay">Author Year placeholder</span>
+            </div>
+            <div class="col-sm-2"></div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!--
+    Zane Taylor
+    CIS 234
+    Project 3
+    New Lenox Monthly Data View Page
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Lenox Temperature App - View Monthly New Lenox Temperatures</title>
+    <!-- Latest compiled and minified CSS for Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript for Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- my stylesheet -->
+    <link href="./css/temperature_styles.css" rel="stylesheet">
+    <!-- my JavaScript -->
+    <script src="./js/shared_functions.js"></script>
+    <script src="./js/temperature_lookup.js"></script>
+
+</head>
+<!-- call function to set copyright text in the footer when the body loads -->
+<body onload="set_footer()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <nav class="navbar">
+                    <ul class="nav">
+                        <!-- Nav Bar containing links to the four website pages -->
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="your_data.html">Your Forecast Data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="lookup.html">New Lenox Lookup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="monthly.html">New Lenox Monthly View</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <!-- Page Title and information on how to interact with this page's application, which involves selecting
+                    a month and displaying all of the dates and temperature data for that month in the year 2022 -->
+                <h1>New Lenox Monthly Temperatures</h1>
+                <p>
+                    Choose a month below to view the temperatures for each day in that month for the year 2022.
+                    Note that only January, February, March, and April can be selected.
+                </p>
+
+                <!-- Form containing the selector object with four option objects, along with a submit month button.
+                    These are used to interact with the application. The button calls a function when clicked. -->
+                <form action="#" method="post">
+                    <label for="monthID">Select a Month:</label>
+                    <select class="form-control" id="monthID" name="month" required="required">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                    </select>
+                    <br />
+                    <button type="button" class="btn btn-primary text-light" id="monthButton" onclick="monthDisplay()">Submit Month</button>
+                </form>
+
+                <!-- A long table used to display every date and its temperature data in a month. The table is not
+                    displayed when there is no data inside it. Each ID of the table cells is used to fill the table.
+                    There are enough rows for 31 dates; months with less dates leave the remaining cells empty. -->
+                <table id="displayTable">
+                    <tr>
+                        <th class='leftSideTable'>Date</th>
+                        <th class='leftSideTable'>High Temperature</th>
+                        <th class='leftSideTable'>Low Temperature</th>
+                        <th class='leftSideTable'>Average Temperature</th>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="0A"></td>
+                        <td class='rightSideTable' id="0B"></td>
+                        <td class='rightSideTable' id="0C"></td>
+                        <td class='rightSideTable' id="0D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="1A"></td>
+                        <td class='rightSideTable' id="1B"></td>
+                        <td class='rightSideTable' id="1C"></td>
+                        <td class='rightSideTable' id="1D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="2A"></td>
+                        <td class='rightSideTable' id="2B"></td>
+                        <td class='rightSideTable' id="2C"></td>
+                        <td class='rightSideTable' id="2D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="3A"></td>
+                        <td class='rightSideTable' id="3B"></td>
+                        <td class='rightSideTable' id="3C"></td>
+                        <td class='rightSideTable' id="3D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="4A"></td>
+                        <td class='rightSideTable' id="4B"></td>
+                        <td class='rightSideTable' id="4C"></td>
+                        <td class='rightSideTable' id="4D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="5A"></td>
+                        <td class='rightSideTable' id="5B"></td>
+                        <td class='rightSideTable' id="5C"></td>
+                        <td class='rightSideTable' id="5D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="6A"></td>
+                        <td class='rightSideTable' id="6B"></td>
+                        <td class='rightSideTable' id="6C"></td>
+                        <td class='rightSideTable' id="6D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="7A"></td>
+                        <td class='rightSideTable' id="7B"></td>
+                        <td class='rightSideTable' id="7C"></td>
+                        <td class='rightSideTable' id="7D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="8A"></td>
+                        <td class='rightSideTable' id="8B"></td>
+                        <td class='rightSideTable' id="8C"></td>
+                        <td class='rightSideTable' id="8D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="9A"></td>
+                        <td class='rightSideTable' id="9B"></td>
+                        <td class='rightSideTable' id="9C"></td>
+                        <td class='rightSideTable' id="9D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="10A"></td>
+                        <td class='rightSideTable' id="10B"></td>
+                        <td class='rightSideTable' id="10C"></td>
+                        <td class='rightSideTable' id="10D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="11A"></td>
+                        <td class='rightSideTable' id="11B"></td>
+                        <td class='rightSideTable' id="11C"></td>
+                        <td class='rightSideTable' id="11D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="12A"></td>
+                        <td class='rightSideTable' id="12B"></td>
+                        <td class='rightSideTable' id="12C"></td>
+                        <td class='rightSideTable' id="12D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="13A"></td>
+                        <td class='rightSideTable' id="13B"></td>
+                        <td class='rightSideTable' id="13C"></td>
+                        <td class='rightSideTable' id="13D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="14A"></td>
+                        <td class='rightSideTable' id="14B"></td>
+                        <td class='rightSideTable' id="14C"></td>
+                        <td class='rightSideTable' id="14D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="15A"></td>
+                        <td class='rightSideTable' id="15B"></td>
+                        <td class='rightSideTable' id="15C"></td>
+                        <td class='rightSideTable' id="15D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="16A"></td>
+                        <td class='rightSideTable' id="16B"></td>
+                        <td class='rightSideTable' id="16C"></td>
+                        <td class='rightSideTable' id="16D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="17A"></td>
+                        <td class='rightSideTable' id="17B"></td>
+                        <td class='rightSideTable' id="17C"></td>
+                        <td class='rightSideTable' id="17D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="18A"></td>
+                        <td class='rightSideTable' id="18B"></td>
+                        <td class='rightSideTable' id="18C"></td>
+                        <td class='rightSideTable' id="18D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="19A"></td>
+                        <td class='rightSideTable' id="19B"></td>
+                        <td class='rightSideTable' id="19C"></td>
+                        <td class='rightSideTable' id="19D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="20A"></td>
+                        <td class='rightSideTable' id="20B"></td>
+                        <td class='rightSideTable' id="20C"></td>
+                        <td class='rightSideTable' id="20D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="21A"></td>
+                        <td class='rightSideTable' id="21B"></td>
+                        <td class='rightSideTable' id="21C"></td>
+                        <td class='rightSideTable' id="21D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="22A"></td>
+                        <td class='rightSideTable' id="22B"></td>
+                        <td class='rightSideTable' id="22C"></td>
+                        <td class='rightSideTable' id="22D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="23A"></td>
+                        <td class='rightSideTable' id="23B"></td>
+                        <td class='rightSideTable' id="23C"></td>
+                        <td class='rightSideTable' id="23D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="24A"></td>
+                        <td class='rightSideTable' id="24B"></td>
+                        <td class='rightSideTable' id="24C"></td>
+                        <td class='rightSideTable' id="24D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="25A"></td>
+                        <td class='rightSideTable' id="25B"></td>
+                        <td class='rightSideTable' id="25C"></td>
+                        <td class='rightSideTable' id="25D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="26A"></td>
+                        <td class='rightSideTable' id="26B"></td>
+                        <td class='rightSideTable' id="26C"></td>
+                        <td class='rightSideTable' id="26D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="27A"></td>
+                        <td class='rightSideTable' id="27B"></td>
+                        <td class='rightSideTable' id="27C"></td>
+                        <td class='rightSideTable' id="27D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="28A"></td>
+                        <td class='rightSideTable' id="28B"></td>
+                        <td class='rightSideTable' id="28C"></td>
+                        <td class='rightSideTable' id="28D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="29A"></td>
+                        <td class='rightSideTable' id="29B"></td>
+                        <td class='rightSideTable' id="29C"></td>
+                        <td class='rightSideTable' id="29D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="30A"></td>
+                        <td class='rightSideTable' id="30B"></td>
+                        <td class='rightSideTable' id="30C"></td>
+                        <td class='rightSideTable' id="30D"></td>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="31A"></td>
+                        <td class='rightSideTable' id="31B"></td>
+                        <td class='rightSideTable' id="31C"></td>
+                        <td class='rightSideTable' id="31D"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <footer class="row" id="footerMonthly">
+            <div class="col-sm-2"></div>
+            <!-- Author Year placeholder is overwritten due to the set_footer() function -->
+            <div class="col-sm-8">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+                </a>
+                <br />This work is licensed under a
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    Creative Commons Attribution-ShareAlike 4.0 International License
+                </a>.<br /><span id="footerTextDisplay">Author Year placeholder</span>
+            </div>
+            <div class="col-sm-2"></div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!--
+    Zane Taylor
+    CIS 234
+    Project 3
+    New Lenox Data Lookup Page
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Lenox Temperature App - New Lenox Temperature Lookup</title>
+    <!-- Latest compiled and minified CSS for Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript for Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- my stylesheet -->
+    <link href="./css/temperature_styles.css" rel="stylesheet">
+    <!-- my JavaScript -->
+    <script src="./js/shared_functions.js"></script>
+    <script src="./js/temperature_lookup.js"></script>
+
+</head>
+<!-- call function to set copyright text in the footer when the body loads -->
+<body onload="set_footer()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <nav class="navbar">
+                    <ul class="nav">
+                        <!-- Nav Bar containing links to the four website pages -->
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="your_data.html">Your Forecast Data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="lookup.html">New Lenox Lookup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="monthly.html">New Lenox Monthly View</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <!-- Page Title and information on how to interact with this page's application, which involves 
+                    looking up a date to view the temperature data in New Lenox on that date -->
+                <h1>New Lenox Temperature Lookup</h1>
+                <p>
+                    Enter a date below and click the Submit Date button to discover the temperature high, low,
+                    and average for that date in New Lenox, IL, according to data from
+                    <a href="https://www.wunderground.com/">Weather Underground</a>. Only dates from January 1, 2022
+                    to April 30, 2022 (inclusive) are available.
+                </p>
+
+                <!-- Form containing the date picker object, submit date button, and reset button, all used for 
+                    interacting with the application. Functions are called with each button. -->
+                <form action="#" method="post">
+                    <label for="dateID">Date:</label><input type="date" class="form-control" id="dateID" name="date" required="required">
+                    <br />
+                    <button type="button" class="btn btn-primary text-light" id="lookupButton" onclick="lookup()">Submit Date</button>
+                    <input type="reset" class="btn btn-secondary text-light" onclick="clearResultArea()">
+                </form>
+
+                <!-- Div that displays a message if the user submits a date with no temperature data. It is not displayed
+                    when it does not contain a message. -->
+                <div id="displayNoMatch"></div>
+
+                <!-- Table that contains the temperature data of a date that has temperature data. It is not displayed when
+                    it does not contain any data. -->
+                <table id="displayTable">
+                    <tr>
+                        <th class='leftSideTable'>Date</th>
+                        <th class='leftSideTable'>High Temperature</th>
+                        <th class='leftSideTable'>Low Temperature</th>
+                        <th class='leftSideTable'>Average Temperature</th>
+                    </tr>
+                    <tr>
+                        <td class='leftSideTable' id="displayDate"></td>
+                        <td class='rightSideTable' id="displayHigh"></td>
+                        <td class='rightSideTable' id="displayLow"></td>
+                        <td class='rightSideTable' id="displayAverage"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <footer class="row" id="footerLookup">
+            <div class="col-sm-2"></div>
+            <!-- Author Year placeholder is overwritten due to the set_footer() function -->
+            <div class="col-sm-8">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+                </a>
+                <br />This work is licensed under a
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    Creative Commons Attribution-ShareAlike 4.0 International License
+                </a>.<br /><span id="footerTextDisplay">Author Year placeholder</span>
+            </div>
+            <div class="col-sm-2"></div>
+        </footer>
+    </div>
+</body>
+</html>

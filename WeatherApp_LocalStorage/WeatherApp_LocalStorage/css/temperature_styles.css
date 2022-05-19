@@ -1,0 +1,93 @@
+/* 
+    Zane Taylor
+    CIS 234
+    Project 3
+    Cascade Style Sheet
+    (for all html pages in the project)
+*/
+
+/* nav rules */
+.navbar, .nav-link {
+    background-color: lemonchiffon;
+}
+
+/* body rules */
+h1 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.form-control {
+    width: 50%;
+}
+
+#indexList 
+{
+    list-style-type: none;
+}
+
+#indexList a
+{
+    text-decoration: none;
+    font-weight:600;
+}
+
+#key_length
+{
+    padding-top:1.0em;
+}
+
+.yourDataButton
+{
+    margin-top:1.2em;
+}
+
+/* footer rules */
+footer 
+{
+    text-align: center;
+}
+
+#footerIndex 
+{
+    padding-top: 343px;
+}
+
+#footerLookup, #footerMonthly 
+{
+    padding-top: 307.5px;
+}
+
+#yourFooter 
+{
+    padding-top: 141.5px;
+}
+
+/* display area and table rules */
+#displayNoMatch {
+    display: none;
+    margin-top: 1.5em;
+}
+
+#displayTable{
+    display:none;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+table {
+    margin-top: 1.5em;
+}
+
+.leftSideTable {
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+.rightSideTable {
+    padding-right: 1em;
+    text-align: center;
+}
