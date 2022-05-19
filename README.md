@@ -9,7 +9,7 @@ The monthly page allows the user to look up one of four months (January 2022 thr
 
 The final page, your_data, allows users to create their own forecast records (consisting of a date, temperature, location, and weather pattern) and then save them to local storage. The page will also display all the records the user created, allow the user to edit and delete individual records, or mass delete all records.
 
-There is also a companion project in anothe repository of mine, that has the same apperance and does all the same stuff, except it uses MongoDB to store data instead of JavaScripy arrays and LocalStorage.
+There is also a companion project in anothe repository of mine, that has the same apperance and does all the same stuff, except it uses MongoDB to store data instead of JavaScripy arrays and LocalStorage. It is found at https://github.com/SapphireJester/Weather_App_Node_MongoDB
 
 This application is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. More information on that license can be found at https://creativecommons.org/licenses/by-sa/4.0/
 
